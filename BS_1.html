@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <title>JavaScript</title>
+    <style>
+      .numb {
+        font-size: 2em;
+      }
+
+      button {
+        margin-bottom: 15px;
+        margin-top: 10px;
+      }
+
+      small {
+        font-size: 0.8em;
+        font-family: sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="message">Guess Combo</div>
+    <div class="game"></div>
+    <button type="button">Start</button>
+    <div>
+      <small>
+        Instructions: Guess the combo, blue means higher red means lower. Try to
+        solve it in as little guesses as possible.
+      </small>
+    </div>
+    <script>
+      const gameArea = document.querySelector(".game");
+      const button = document.querySelector("button");
+      const message = document.querySelector(".message");
+
+      button.addEventListener("click", createBox);
+
+      function createBox() {
+        let box = document.createElement("input");
+        box.setAttribute("type", "text");
+        box.onkeypress = "return isNumberKey(event)";
+      }
+
+      function isNumberKey(evt) {
+        var charCode = evt.which ? evt.which : evt.keyCode;
+
+        if (charCode == 13) {
+          compare();
+        }
+        if (charCode < 48 || charCode > 57) return false;
+        if (inputNumber.value.length >= 1) {
+          inputNumber.value = 9;
+          return false;
+        }
+        setTimeout(() => (inputNumber.value = parseInt(inputNumber.value)), 10);
+
+        return true;
+      }
+    </script>
+  </body>
+</html>
