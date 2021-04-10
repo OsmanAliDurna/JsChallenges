@@ -33,28 +33,57 @@
       const button = document.querySelector("button");
       const message = document.querySelector(".message");
 
+      let notselected = true;
+      let attempt = 0;
+      let found = 0;
+
       button.addEventListener("click", createBox);
 
       function createBox() {
-        let box = document.createElement("input");
-        box.setAttribute("type", "text");
-        box.onkeypress = "return isNumberKey(event)";
-      }
-
-      function isNumberKey(evt) {
-        var charCode = evt.which ? evt.which : evt.keyCode;
-
-        if (charCode == 13) {
-          compare();
+        if (notselected) {
+          let howMany = parseInt(prompt("How many box you want ? (1-10)"));
+          gameArea.innerHTML = "";
+          message.innerHTML = "Guess the combo";
+          button.innerHTML = "Check Combo";
+          for (let i = 0; i < howMany; i++) {
+            var box = document.createElement("input");
+            box.setAttribute("type", "number");
+            box.setAttribute("onkeypress", "return false;");
+            box.max = 9;
+            box.min = 0;
+            box.value = 0;
+            box.correct = Math.floor(Math.random() * 10);
+            box.style.width = "3rem";
+            gameArea.appendChild(box);
+            if (i == 9) break;
+          }
+          notselected = false;
+        } else {
+          found = 0;
+          attempt += 1;
+          message.innerHTML = "Attempts : " + attempt;
+          const guess = document.querySelectorAll("input");
+          for (let i = 0; i < guess.length; i++) {
+            guess[i].style.color = "white";
+            guess[i].style.backgroundColor =
+              guess[i].value > guess[i].correct ? "red" : "blue";
+            if (guess[i].value == guess[i].correct) {
+              guess[i].style.backgroundColor = "green";
+              guess[i].disabled = true;
+              found++;
+            }
+            if (found == guess.length) {
+              result();
+              break;
+            }
+          }
         }
-        if (charCode < 48 || charCode > 57) return false;
-        if (inputNumber.value.length >= 1) {
-          inputNumber.value = 9;
-          return false;
+        function result() {
+          message.innerHTML =
+            "You solved the combo in  " + attempt + " guesses.";
+          button.innerHTML = "Restart Game";
+          notselected = true;
         }
-        setTimeout(() => (inputNumber.value = parseInt(inputNumber.value)), 10);
-
-        return true;
       }
     </script>
   </body>
