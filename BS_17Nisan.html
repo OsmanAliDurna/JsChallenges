@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>17 Nisan Challenge - Special Thanks to Barry-</title>
+  </head>
+  <body>
+    <script>
+      let operations = [];
+      // You can add any array as : operations.push([...]);
+      operations.push(["5 + 6", "2 * 3", "8 / 4", "4 - 5"]);
+      operations.push(["3 + 4", "3 * 4", "4 * 5"]);
+
+      let i = 0;
+
+      while (operations[i] !== undefined) {
+        let result = [];
+        for (let j = 0; j < operations[i].length; j++) {
+          if (operations[i][j].includes("+"))
+            result.push(
+              parseInt(operations[i][j].split("+")[0]) +
+                parseInt(operations[i][j].split("+")[1])
+            );
+          else if (operations[i][j].includes("-"))
+            result.push(
+              parseInt(operations[i][j].split("-")[0]) -
+                parseInt(operations[i][j].split("-")[1])
+            );
+          else if (operations[i][j].includes("*"))
+            result.push(
+              parseInt(operations[i][j].split("*")[0]) *
+                parseInt(operations[i][j].split("*")[1])
+            );
+          else if (operations[i][j].includes("/"))
+            result.push(
+              parseFloat(operations[i][j].split("/")[0]) /
+                parseFloat(operations[i][j].split("/")[1])
+            );
+        }
+        console.log(result);
+        i++;
+      }
+    </script>
+  </body>
+</html>
