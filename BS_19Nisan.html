@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>17 Nisan Challenge - Special Thanks to Barry-</title>
+  </head>
+  <body>
+    <script>
+      // reduce function
+
+      // const arr1 = [1, 2, 3, 4];
+
+      // const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+      // console.log(arr1.reduce(reducer));
+      // console.log(arr1.reduce(reducer, 5));
+
+      // let myArray = ['a', 'b', 'a', 'b', 'c', 'e', 'e', 'c', 'd', 'd', 'd', 'd'];
+      // let acc2 = [];
+      // let unique = myArray.reduce(function (acc, item) {
+      //   if (acc.indexOf(item) === -1) {
+      //     acc.push(item);
+      //   }
+      //   return acc;
+      // }, acc2);
+
+      // console.log(unique);
+
+      const lineItems = [
+        { description: "Eggs (Dozen)", quantity: 1, price: 3, total: 3 },
+        { description: "Cheese", quantity: 0.5, price: 5, total: 2.5 },
+        { description: "Butter", quantity: 2, price: 6, total: 12 },
+      ];
+
+      const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
+      let total = lineItems.reduce(function (acc, item) {
+        acc.push(item.total);
+        return acc;
+      }, []);
+
+      console.log(total.reduce(reducer));
+    </script>
+  </body>
+</html>
