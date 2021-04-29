@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>25 Nisan Challenge - Special Thanks to Barry-</title>
+  </head>
+  <body>
+    <script>
+      const students = new Map();
+      for (let i = 1; i < 6; i++) {
+        const scores = {};
+        for (let j = 1; j < 6; j++) {
+          scores[`Lesson-${j}`] = Math.floor(Math.random() * 66 + 35);
+        }
+        students.set(`Student-${i}`, scores);
+      }
+      console.log(Object.fromEntries(students));
+    </script>
+  </body>
+</html>
