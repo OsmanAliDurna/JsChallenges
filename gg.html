@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>All combinations of a JavaScript array values.</title>
+  </head>
+  <body style="text-align: center">
+    <h1 style="color: green">GeeksforGeeks</h1>
+    <p id="GFG_UP"></p>
+    <button id="button" onclick="GFG_Fun();">click here</button>
+    <p id="GFG_DOWN"></p>
+    <script>
+      var up = document.getElementById("GFG_UP");
+      var down = document.getElementById("GFG_DOWN");
+      var arr = [["m", "n"], ["c"], ["d", "e", "f"]];
+      up.innerHTML =
+        "CLick on the button to get the " +
+        "all combinations of arrays.<br>Array - " +
+        "[[" +
+        arr[0] +
+        "], [" +
+        arr[1] +
+        "], [" +
+        arr[2] +
+        "]]";
+      function getCombn(arr, pre) {
+        pre = pre || "";
+        if (!arr.length) {
+          return pre;
+        }
+        var ans = arr[0].reduce(function (ans, value) {
+          return ans.concat(getCombn(arr.slice(1), pre + value));
+        }, []);
+        return ans;
+      }
+      function GFG_Fun() {
+        down.innerHTML = getCombn(arr);
+      }
+    </script>
+  </body>
+</html>
