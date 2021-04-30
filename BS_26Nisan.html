@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>26 Nisan Challenge - Special Thanks to Barry-</title>
+  </head>
+  <body>
+    <script>
+      const array = [10, 15, 3, 7];
+      const total = 17;
+      let sum = 0;
+
+      let sortedArray = array.sort(function (a, b) {
+        return b - a;
+      });
+
+      for (let i = 0; i < array.length; i++) {
+        for (let j = i; j < array.length; j++) {
+          sum += array[j];
+          console.log(sum);
+          if (total < sum) {
+            sum -= array[j];
+          }
+          if (sum == total) break;
+        }
+        if (sum == total) break;
+        sum -= array[i];
+      }
+    </script>
+  </body>
+</html>
